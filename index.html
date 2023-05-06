@@ -8,11 +8,11 @@
     <meta name="description" content="Plataforma do disney plus para uso de portfólio" />
 
     <!-- FAVICON -->
-    <link rel="shortcut icon" type="image/jpg" href="./assets/favicon.ico" />
+    <link rel="shortcut icon" type="image/jpg" href="./assets/logo.png" />
 
-    <!-- GOOGLE FONTS -->
+    <!-- GOOGLE FONTES -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <!-- *currently set to "Roboto". Feel free to change it to whatever you like* -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -20,7 +20,45 @@
     <link rel="stylesheet" href="./css/global.css" />
   </head>
   <body>
-    <h1>Olá Mundão!</h1>
+    <div id="app">
+      <header>
+        <img src="/assets/logo.png" alt="LOGO DISNEY+">
+        <button type="button" class="button__menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </header>
+
+      <main>
+        <section class="filme">
+          <div class="avaliacao">
+            <img src="/assets/logo-imdb.png" alt="Logo da IMDB">
+            <strong>8.8</strong>
+          </div>
+
+          <span>2021 - Kids - Movie</span>
+
+          <h1>LUCA</h1>
+
+          <p>Ambientado na bela Riviera Italiana, este longa-metragem da Disney e da Pixar acompanha as aventuras do garoto Luca durante um verão inesquecível repleto de macarronadas, gelatos e passeios incríveis de motoneta ao lado de seu novo amigo Alberto. Mas um grande segredo ameaça colocar fim à diversão: abaixo da superfície da água, eles são monstros marinhos!</p>
+          <button>
+            <img src="/assets/icon-play-button.png" alt="">
+            Assistir
+          </button>
+        </section>
+
+        <aside class="filmes">
+          <h2>Filmes</h2>
+          <ul>
+            <li>filme 1</li>
+            <li>filme 2</li>
+            <li>filme 3</li>
+            <li>filme 4</li>
+          </ul>
+        </aside>
+      </main>
+    </div>
 
     <script src="./js/index.js"></script>
   </body>
