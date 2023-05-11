@@ -1,7 +1,9 @@
 @import url('./app.css');
+@import url('./form.css');
 @import url('./header.css');
 @import url('./filme.css');
 @import url('./filmes.css');
+@import url('./navigation.css');
 
 * {
   margin: 0;
@@ -14,6 +16,7 @@
     font-size: 93.75%;
   }
 }
+
 @media (max-width: 720px) {
   html {
     font-size: 87.5%;
@@ -21,13 +24,9 @@
 }
 
 :root {
-  --background: #f5f6fa;
+  --primary: #fff;
 
-  --primary: #373D4F;
-}
-
-body {
-  background: var(--background);
+  --linear: linear-gradient(154.23deg, #0F3A7B -58.45%, #0CFFFF 374.49%);
 }
 
 body, button, textarea, input {
