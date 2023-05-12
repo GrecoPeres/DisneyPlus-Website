@@ -4,62 +4,80 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Disney Plus - Greco WEB</title>
-    <meta name="description" content="Plataforma do disney plus para uso de portfólio" />
+    <title>Disney Plus</title>
+    <meta name="description" content="Plataforma do disney plus" />
 
     <!-- FAVICON -->
-    <link rel="shortcut icon" type="image/jpg" href="./assets/logo.png" />
+    <link rel="shortcut icon" type="image/jpg" href="/assets/logo.png" />
 
-    <!-- GOOGLE FONTES -->
+    <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-
+    <!-- *currently set to "Roboto". Feel free to change it to whatever you like* -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- CSS STYLE LINK -->
-    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="/css/global.css" />
   </head>
   <body>
     <div id="app">
+      <div class="app__image">
+        <img
+          loading="lazy"
+          alt="Imagem do filme destaque"
+          src="https://image.tmdb.org/t/p/original/620hnMVLu6RSZW6a5rwO8gqpt0t.jpg"
+        />
+      </div>
+
       <header>
-        <img src="/assets/logo.png" alt="LOGO DISNEY+">
-        <button type="button" class="button__menu">
+        <img src="/assets/logo.png" alt="Logo da disney plus" />
+
+        <button type="button" class="button__menu" onclick="changeButtonMenu()">
           <span></span>
           <span></span>
           <span></span>
         </button>
+
+        <nav class="navigation">
+          <h2>Movies</h2>
+
+          <form class="form" id="add__movie">
+            <input type="text" placeholder="Adicione o seu filme" name="movie" />
+
+            <button type="submit">
+              +
+            </button>
+          </form>
+
+          <ul id="movies">
+
+          </ul>
+        </nav>
       </header>
 
       <main>
-        <section class="filme">
-          <div class="avaliacao">
-            <img src="/assets/logo-imdb.png" alt="Logo da IMDB">
-            <strong>8.8</strong>
+        <section class="feature__movie">
+          <div class="rating">
+            <img src="/assets/logo-imdb.png" alt="Logo da IMDB" />
+            <strong></strong>
           </div>
 
-          <span>2021 - Kids - Movie</span>
+          <!-- DATA DE LANÇAMENTO, CATEGORIA -->
+          <span></span>
+          <!-- TITULO DO FILME -->
+          <h1></h1>
+          <!-- SINOPSE DO FILME -->
+          <p></p>
 
-          <h1>LUCA</h1>
-
-          <p>Ambientado na bela Riviera Italiana, este longa-metragem da Disney e da Pixar acompanha as aventuras do garoto Luca durante um verão inesquecível repleto de macarronadas, gelatos e passeios incríveis de motoneta ao lado de seu novo amigo Alberto. Mas um grande segredo ameaça colocar fim à diversão: abaixo da superfície da água, eles são monstros marinhos!</p>
-          <button>
-            <img src="/assets/icon-play-button.png" alt="">
-            Assistir
+          <button type="button">
+            <img src="/assets/icon-play.png" alt="Icon play">
+            Assistir agora
           </button>
         </section>
 
-        <aside class="filmes">
-          <h2>Filmes</h2>
-          <ul>
-            <li>filme 1</li>
-            <li>filme 2</li>
-            <li>filme 3</li>
-            <li>filme 4</li>
-          </ul>
-        </aside>
       </main>
     </div>
 
-    <script src="./js/index.js"></script>
+    <script src="/js/index.js"></script>
   </body>
 </html>
