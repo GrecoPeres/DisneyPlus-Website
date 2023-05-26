@@ -1,27 +1,37 @@
+// Definindo a chave da API e o idioma padrão
 const API_KEY = '03c4e3dc470296959d6bf68804146538'
 const API_LANGUAGE = 'pt-br'
+
+// URL base das imagens
 const BASE_URL_IMAGE = {
   original: 'https://image.tmdb.org/t/p/original',
   small: 'https://image.tmdb.org/t/p/w500'
 }
 
+// Array para armazenar os filmes
 const movies = []
+
+// Variável para armazenar o filme ativo
 let movieActive = ''
+
+// Elemento HTML para exibir os filmes
 const moviesElement = document.getElementById('movies')
 
+// Função para obter a URL do filme com base no ID
 function getUrlMovie(movieId) {
   return `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=${API_LANGUAGE}`
 }
 
+// Função para alternar o menu lateral
 function changeButtonMenu() {
   const button = document.querySelector('.button__menu')
   const navigation = document.querySelector('.navigation')
-
 
   button.classList.toggle('active')
   navigation.classList.toggle('active')
 }
 
+// Função para definir o filme principal
 function setMainMovie(movie) {
   const appImage = document.querySelector('.app__image img')
   const title = document.querySelector('.feature__movie h1')
@@ -32,11 +42,12 @@ function setMainMovie(movie) {
   title.innerHTML = movie.title
   description.innerHTML = movie.overview
   rating.innerHTML = movie.vote_average
-  info.innerHTML = movie.release + ' - ' + movie.genre + ' - Movie'
+  info.innerHTML = movie.release + ' - ' + movie.genre + ' - Filme'
 
   appImage.setAttribute('src', movie.image.original)
 }
 
+// Função para alterar o filme ativo na lista
 function changeMovieActiveInList(newMovieActive) {
   const movieActiveCurrent = document.getElementById(movieActive)
   movieActiveCurrent.classList.remove('active-movie')
@@ -47,28 +58,31 @@ function changeMovieActiveInList(newMovieActive) {
   movieActive = newMovieActive
 }
 
+// Função para alterar o filme principal
 function changeMainMovie(movieId) {
   changeMovieActiveInList(movieId)
 
   const movie = movies.find(movie => movie.id === movieId)
 
-  if(movie?.id) {
+  if (movie?.id) {
     setMainMovie(movie)
     changeButtonMenu()
-  } else  {
+  } else {
     console.log(movies)
-    console.log('não foi possível achar o filme com o id', movieId)
+    console.log('Não foi possível encontrar o filme com o ID', movieId)
   }
 }
 
+// Função para criar o botão do filme
 function createButtonMovie(movieId) {
   const button = document.createElement('button')
   button.setAttribute('onclick', `changeMainMovie('${movieId}')`)
-  button.innerHTML = '<img src="/assets/icon-play-button.png" alt="Icon play button" />'
+  button.innerHTML = '<img src="/assets/icon-play-button.png" alt="Ícone do botão de reprodução" />'
 
   return button
 }
 
+// Função para criar a imagem do filme
 function createImageMovie(movieImage, movieTitle) {
   const divImageMovie = document.createElement('div')
   divImageMovie.classList.add('movie__image')
@@ -84,6 +98,7 @@ function createImageMovie(movieImage, movieTitle) {
   return divImageMovie
 }
 
+// Função para adicionar um filme na lista
 function addMovieInList(movie) {
   const movieElement = document.createElement('li')
   movieElement.classList.add('movie')
@@ -100,14 +115,15 @@ function addMovieInList(movie) {
   moviesElement.appendChild(movieElement)
 }
 
+// Função assíncrona para obter os dados do filme
 async function getMovieData(movieId) {
   const isMovieInList = movies.findIndex(movie => movie.id === movieId)
 
-  if(isMovieInList === -1) {
+  if (isMovieInList === -1) {
     try {
       let data = await fetch(getUrlMovie(movieId))
       data = await data.json()
-    
+
       const movieData = {
         id: movieId,
         title: data.title,
@@ -121,25 +137,26 @@ async function getMovieData(movieId) {
         }
       }
       movies.push(movieData)
-    
+
       return movieData
-    } catch(error) {
-      console.log('mensagem de erro:', error.message)
+    } catch (error) {
+      console.log('Mensagem de erro:', error.message)
     }
   }
 
   return null
 }
 
+// Função para carregar os filmes
 function loadMovies() {
-  const LIST_MOVIES = ['tt12801262', 'tt4823776', 'tt0800369', 'tt3896198', 'tt1211837', 'tt1825683']
-  
+  const LIST_MOVIES = ['502356', '385687', 'tt12801262', 'tt4823776', '616037', 'tt3896198', '453395', 'tt1825683', '385687', '603692', '502356', '447365', '76600', '569094', '315162', '505642']
+
   LIST_MOVIES.map(async (movie, index) => {
     const movieData = await getMovieData(movie)
 
     addMovieInList(movieData)
 
-    if(index === 0) {
+    if (index === 0) {
       setMainMovie(movieData)
       movieActive = movieData.id
 
@@ -149,28 +166,32 @@ function loadMovies() {
   })
 }
 
+// Botão para adicionar um novo filme
 const buttonAddMovie = document.getElementById('add__movie')
 
+// Função para formatar o ID do filme
 function formattedMovieId(movieId) {
-  if(movieId.includes('https://www.imdb.com/title/')) {
+  if (movieId.includes('https://www.imdb.com/title/')) {
     const id = movieId.split('/')[4]
     return id
   }
-  
+
   return movieId
 }
 
-buttonAddMovie.addEventListener('submit', async function(event) {
+// Evento de envio do formulário de adição de filme
+buttonAddMovie.addEventListener('submit', async function (event) {
   event.preventDefault()
 
   const newMovieId = formattedMovieId(event.target['movie'].value)
   const newMovie = await getMovieData(newMovieId)
 
-  if(newMovie?.id) {
+  if (newMovie?.id) {
     addMovieInList(newMovie)
   }
 
   event.target['movie'].value = ''
 })
 
+// Carregar os filmes ao carregar a página
 loadMovies()

@@ -1,46 +1,49 @@
+/* Estilos para a navegação */
 .navigation {
-    position: fixed;
-    top: 0;
-    right: -660px;
-  
-    width: 660px;
-    height: 100%;
-    padding: 66px 80px 32px 54px;
-  
-    background: #093f7a;
-    transition: all 0.6s;
-    overflow: auto;
+  position: fixed;
+  top: 0;
+  right: -660px;
+  width: 660px;
+  height: 100%;
+  padding: 66px 80px 32px 54px;
+  background: #093f7a;
+  transition: all 0.6s;
+  overflow: auto;
+}
+
+/* Estilos para a navegação ativa */
+.navigation.active {
+  transform: translateX(-660px);
+}
+
+/* Estilos para o título da navegação */
+.navigation h2 {
+  font-size: 1.75rem;
+  line-height: 2.125rem;
+  font-weight: 700;
+}
+
+/* Media query para altura máxima de 750px */
+@media(max-height: 750px) {
+  .navigation {
+    padding: 70px 40px 40px;
   }
-  
+}
+
+/* Media query para largura máxima de 768px */
+@media(max-width: 768px) {
+  .navigation {
+    width: 100vw;
+    right: -100vw;
+  }
   .navigation.active {
-    transform: translateX(-660px);
+    transform: translateX(-100vw);
   }
-  
-  .navigation h2 {
-    font-size: 1.75rem;
-    line-height: 2.125rem;
-    font-weight: 700;
+}
+
+/* Media query para largura máxima de 650px */
+@media(max-width: 650px) {
+  .navigation {
+    padding: 44px 24px 24px;
   }
-  
-  @media(max-height: 750px) {
-    .navigation {
-      padding: 70px 40px 40px;
-    }
-  }
-  
-  @media(max-width: 768px) {
-    .navigation {
-      width: 100vw;
-      right: -100vw;
-    }
-  
-    .navigation.active {
-      transform: translateX(-100vw);
-    }
-  }
-  
-  @media(max-width: 650px) {
-    .navigation {
-      padding: 44px 24px 24px;
-    }
-  }
+}

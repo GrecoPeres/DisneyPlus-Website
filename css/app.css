@@ -1,60 +1,69 @@
+/* Estilização para o elemento raiz do aplicativo */
 #app {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-  
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-    padding: 45px 80px 0 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  padding: 45px 80px 0 110px;
+}
+
+/* Estilização para o elemento principal do aplicativo */
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+/* Estilização para a imagem de fundo do aplicativo */
+.app__image {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+/* Estilização para o gradiente sobreposto na imagem de fundo do aplicativo */
+.app__image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90.18deg, rgba(13, 22, 46, 0.7) 23.21%, rgba(13, 22, 46, 0.0001) 96.69%);
+}
+
+/* Estilização para a imagem do aplicativo */
+.app__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Media query para telas menores ou iguais a 1080px */
+@media (max-width: 1080px) {
+  /* Ajuste de padding para o elemento raiz do aplicativo */
+  #app {
+    padding: 40px;
   }
-  
-  main {
-    flex: 1;
-    display: flex;
-    align-items: center;
+}
+
+/* Media query para telas menores ou iguais a 768px */
+@media (max-width: 768px) {
+  /* Ajuste de padding para o elemento raiz do aplicativo */
+  #app {
+    padding: 24px;
   }
-  
-  .app__image {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
+}
+
+/* Media query para telas menores ou iguais a 650px */
+@media (max-width: 650px) {
+  /* Ajuste de padding para o elemento raiz do aplicativo */
+  #app {
+    padding: 16px;
   }
-  
+
+  /* Ajuste de gradiente sobreposto na imagem de fundo do aplicativo */
   .app__image::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-  
-    background: linear-gradient(90.18deg, rgba(13, 22, 46, 0.7) 23.21%, rgba(13, 22, 46, 0.0001) 96.69%);
+    background: linear-gradient(90.18deg, rgba(13, 22, 46, 0.7) 30%, rgba(13, 22, 46, 0.2) 96.69%);
   }
-  
-  .app__image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  @media(max-width: 1080px) {
-    #app {
-      padding: 40px;
-    }
-  }
-  
-  @media(max-width: 768px) {
-    #app {
-      padding: 24px;
-    }
-  }
-  
-  @media(max-width: 650px) {
-    #app {
-      padding: 16px;
-    }
-  
-    .app__image::after {
-      background: linear-gradient(90.18deg, rgba(13, 22, 46, 0.7) 30%, rgba(13, 22, 46, 0.2) 96.69%);
-    }
-  }
-  
+}

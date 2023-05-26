@@ -1,57 +1,62 @@
+/* Estilização para o formulário */
 .form {
-    display: flex;
-    align-items: stretch;
-    column-gap: 24px;
-  
-    width: 100%;
-    height: 48px;
-    margin-top: 28px;
+  display: flex;
+  align-items: stretch;
+  column-gap: 24px;
+  width: 100%;
+  height: 48px;
+  margin-top: 28px;
+}
+
+/* Estilização para o campo de entrada de texto */
+.form input {
+  flex: 1;
+  border: 0;
+  height: 100%;
+  border-radius: 6px;
+  padding: 0 16px;
+  background: rgba(255,255,255, 0.1);
+  outline: none;
+}
+
+/* Estilização para o texto de exemplo no campo de entrada */
+.form input::placeholder {
+  color: #c0c0c0;
+}
+
+/* Estilização para o botão do formulário */
+.form button {
+  width: 48px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--linear);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* Media query para telas menores ou iguais a 650px */
+@media (max-width: 650px) {
+  /* Ajuste de layout para exibição vertical dos elementos do formulário */
+  .form {
+    flex-direction: column;
+    gap: 16px 0;
+    height: auto;
   }
-  
+
+  /* Ajuste de estilo para o campo de entrada de texto em telas menores */
   .form input {
-    flex: 1;
-    border: 0;
-    height: 100%;
-    border-radius: 6px;
-    padding: 0 16px;
-    background: rgba(255,255,255, 0.1);
-  
-    outline: none;
+    padding: 10px 12px;
   }
-  
-  .form input::placeholder {
-    color: #c0c0c0;
-  }
-  
+
+  /* Ajuste de estilo para o botão em telas menores */
   .form button {
-    width: 48px;
-    border: 0;
-    border-radius: 6px;
-    background: var(--linear);
-  
-    font-size: 1.5rem;
-    font-weight: 700;
+    height: 40px;
+    width: 100%;
+    font-size: 1rem;
   }
-  
-  @media(max-width: 650px) {
-    .form {
-      flex-direction: column;
-      gap: 16px 0;
-      height: auto;
-    }
-  
-    .form input {
-      padding: 10px 12px;
-    }
-  
-    .form button {
-      height: 40px;
-      width: 100%;
-  
-      font-size: 1rem;
-    }
-  
-    .form button::before {
-      content: 'Adicionar'
-    }
+
+  /* Estilização adicional para o texto do botão em telas menores */
+  .form button::before {
+    content: 'Adicionar';
   }
+}
