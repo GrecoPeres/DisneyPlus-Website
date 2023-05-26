@@ -77,7 +77,7 @@ function changeMainMovie(movieId) {
 function createButtonMovie(movieId) {
   const button = document.createElement('button')
   button.setAttribute('onclick', `changeMainMovie('${movieId}')`)
-  button.innerHTML = '<img src="/assets/icon-play-button.png" alt="Ícone do botão de reprodução" />'
+  button.innerHTML = '<img src="./assets/icon-play-button.png" alt="Ícone do botão de reprodução" />'
 
   return button
 }
